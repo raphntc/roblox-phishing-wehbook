@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roblox</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#0f1117;
+color:white;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:12px 18px;
+background:#111318;
+}
+
+.logo{
+width:26px;
+height:26px;
+background:white;
+transform:rotate(20deg);
+position:relative;
+}
+
+.logo::after{
+content:"";
+position:absolute;
+width:10px;
+height:10px;
+background:#111318;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+.nav{
+display:flex;
+gap:18px;
+font-size:13px;
+color:#c7c7c7;
+}
+
+.actions{
+display:flex;
+gap:8px;
+}
+
+.btn{
+padding:7px 14px;
+border-radius:8px;
+border:none;
+cursor:pointer;
+font-size:13px;
+font-weight:bold;
+}
+
+.btn-outline{
+background:transparent;
+border:1px solid #777;
+color:white;
+}
+
+.btn-primary{
+background:#3b5cff;
+color:white;
+}
+
+/* CONTAINER */
+
+.container{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:25px;
+}
+
+/* LOADER */
+
+.loader-box{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:20px;
+}
+
+.spinner{
+width:40px;
+height:40px;
+border:4px solid #2a2f38;
+border-top:4px solid #3b5cff;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+to{transform:rotate(360deg);}
+}
+
+.loading-text{
+color:#aaa;
+font-size:14px;
+}
+
+/* ERROR BOX */
+
+.error-box{
+display:none;
+width:100%;
+max-width:420px;
+background:#1c1f26;
+padding:30px;
+border-radius:12px;
+box-shadow:0 12px 30px rgba(0,0,0,0.7);
+text-align:center;
+opacity:0;
+transform:translateY(10px);
+transition:all .5s ease;
+}
+
+.error-box.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.error-icon{
+font-size:40px;
+margin-bottom:15px;
+}
+
+.error-title{
+font-size:22px;
+margin-bottom:10px;
+font-weight:bold;
+}
+
+.error-text{
+font-size:14px;
+color:#bdbdbd;
+line-height:1.6;
+margin-bottom:20px;
+}
+
+.retry-btn{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:none;
+background:#3b5cff;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.retry-btn:hover{
+background:#4d6aff;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+font-size:12px;
+color:#777;
+padding:15px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width:600px){
+
+.nav{
+display:none;
+}
+
+.error-box{
+padding:25px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo"></div>
+
+<div class="nav">
+<span>Destaques</span>
+<span>Mercado</span>
+<span>Criar</span>
+<span>Robux</span>
+</div>
+
+<div class="actions">
+<button class="btn btn-primary">Cadastrar-se</button>
+<button class="btn btn-outline">Entrar</button>
+</div>
+
+</header>
+
+<div class="container">
+
+<!-- LOADER -->
+
+<div class="loader-box" id="loader">
+
+<div class="spinner"></div>
+
+<div class="loading-text">
+Carregando...
+</div>
+
+</div>
+
+<!-- ERROR -->
+
+<div class="error-box" id="errorBox">
+
+<div class="error-icon">⚠</div>
+
+<div class="error-title">
+Serviço indisponível
+</div>
+
+<div class="error-text">
+Nossos serviços estão temporariamente indisponíveis.<br>
+Tente novamente mais tarde.
+</div>
+
+<button class="retry-btn" onclick="window.location.href='https://www.roblox.com/login'">
+Voltar
+</button>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Roblox Corporation
+</footer>
+
+<script>
+
+setTimeout(function(){
+
+document.getElementById("loader").style.display = "none";
+
+const box = document.getElementById("errorBox");
+
+box.style.display = "block";
+
+setTimeout(()=>{
+box.classList.add("show");
+},50);
+
+},2000);
+
+</script>
+
+</body>
+</html>
